@@ -4,7 +4,9 @@
   "description": "Back-end skill test",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require babel-core/register",
+    "run_test": "./node_modules/.bin/mocha --require babel-core/register",
+    "test": "set DATA_SOURCE=inmemory&&npm run run_test",
+    "clean": "rm -rf build",
     "build": "./node_modules/.bin/babel src -d build",
     "babel-node": "./node_modules/.bin/babel-node src/server.js",
     "dev": "set PORT=3000&&npm run babel-node",
@@ -30,6 +32,7 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
+    "dotenv": "^2.0.0",
     "express": "^4.13.4"
   }
 }
