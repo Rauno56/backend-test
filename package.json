@@ -1,0 +1,23 @@
+{
+  "name": "backend-test",
+  "version": "1.0.0",
+  "description": "Back-end skill test",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leocavalcante/backend-test.git"
+  },
+  "keywords": [
+    "backend",
+    "test"
+  ],
+  "author": "leocavalcante <lc@leocavalcante.com>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/leocavalcante/backend-test/issues"
+  },
+  "homepage": "https://github.com/leocavalcante/backend-test#readme"
+}
