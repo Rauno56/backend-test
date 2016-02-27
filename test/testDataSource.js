@@ -1,7 +1,8 @@
 import assert from 'assert';
-import { adapter, inmemory } from '../src/dataSource';
+import factory from '../src/dataSource/factory';
 
-const dataSource = adapter(inmemory);
+const dataSourceFactory = factory(process.env.DATA_SOURCE);
+const dataSource = dataSourceFactory();
 
 describe('dataSource', () => {
   describe('#fetchUsers', () => {
