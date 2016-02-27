@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "./node_modules/.bin/babel src -d build"
+    "build": "./node_modules/.bin/babel src -d build",
+    "babel-node": "./node_modules/.bin/babel-node src/server.js",
+    "dev": "set PORT=3000&&npm run babel-node"
   },
   "repository": {
     "type": "git",
