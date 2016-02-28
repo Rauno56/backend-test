@@ -7,11 +7,11 @@ import {
 export default name => {
   const sources = {
     inmemory() {
-      return adapter(inmemory);
+      return adapter(inmemory());
     },
 
     postgresql() {
-      return adapter(postgresql);
+      return adapter(postgresql(process.env.PSQL_DSN));
     }
   };
 
