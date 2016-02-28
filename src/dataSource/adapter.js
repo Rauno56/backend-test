@@ -1,5 +1,5 @@
-export default ds => ({
-  fetchTopActiveUsers: ds.fetchTopActiveUsers,
-  fetchLastestListings: ds.fetchLastestListings,
-  fetchUser: ds.fetchUser
+export default dataSource => ({
+  fetchTopActiveUsers: dataSource.fetchTopActiveUsers,
+  fetchLastestListings: dataSource.fetchLastestListings,
+  fetchUser: dataSource.fetchUser
 });

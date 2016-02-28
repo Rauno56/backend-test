@@ -2,9 +2,9 @@ import { Router } from 'express';
 import users from './users';
 import topActiveUsers from './topActiveUsers';
 
-const r = Router();
+const router = Router();
 
-r.get('/users', users);
-r.get('/topActiveUsers', topActiveUsers);
+router.get('/users', users);
+router.get('/topActiveUsers', topActiveUsers);
 
-export default r;
+export default router;

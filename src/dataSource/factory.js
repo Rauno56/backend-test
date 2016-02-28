@@ -1,19 +1,17 @@
-import {
-  adapter,
-  inmemory,
-  postgresql
-} from './index';
+import adapter from './adapter';
+import inMemory from './inMemory';
+import postgreSQL from './postgreSQL';
 
 export default name => {
   const sources = {
-    inmemory() {
-      return adapter(inmemory());
+    inMemory() {
+      return inMemory();
     },
 
-    postgresql() {
-      return adapter(postgresql(process.env.PSQL_DSN));
+    postgreSQL() {
+      return postgreSQL(process.env.DSN);
     }
   };
 
-  return sources[name];
+  return adapter(sources[name]());
 }

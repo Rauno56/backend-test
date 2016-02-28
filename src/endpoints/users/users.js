@@ -1,6 +1,6 @@
 import factory from './../../dataSource/factory';
 
-const dataSource = factory(process.env.DATA_SOURCE)();
+const dataSource = factory(process.env.DATA_SOURCE);
 
 export default async (req, res) => {
   try {
@@ -12,7 +12,6 @@ export default async (req, res) => {
 
     const user = await dataSource.fetchUser(id);
     res.json(user);
-    
   } catch (err) {
     res.json(err);
   }
