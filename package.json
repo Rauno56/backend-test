@@ -4,13 +4,11 @@
   "description": "Back-end skill test",
   "main": "index.js",
   "scripts": {
-    "run_test": "./node_modules/.bin/mocha --require babel-core/register --require babel-polyfill",
-    "test": "set DATA_SOURCE=inMemory&&npm run run_test",
+    "test": "./node_modules/.bin/mocha --require babel-core/register --require babel-polyfill",
     "clean": "rm -rf build",
     "build": "./node_modules/.bin/babel src -d build",
-    "babel-node": "./node_modules/.bin/babel-node src/server.js",
-    "dev": "set PORT=3000&&set DATA_SOURCE=postgreSQL&&set DSN=postgres://postgres:123@localhost:5432/backend_test&&npm run babel-node",
-    "start": "set PORT=3001&&node build/server.js"
+    "dev": "./node_modules/.bin/babel-node src/server.js",
+    "start": "node --require babel-polyfill build/server.js"
   },
   "repository": {
     "type": "git",
