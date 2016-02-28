@@ -44,7 +44,6 @@ export default function (dsn) {
             FROM users u
            WHERE u.id = $1
         `, id),
-
         db.query(`
           SELECT c.id,
                  c.created_at,
@@ -53,12 +52,29 @@ export default function (dsn) {
             FROM companies c
             JOIN teams t ON t.company_id = c.id
            WHERE t.user_id = $1
+        `, id),
+        db.query(`
+          SELECT l.id,
+                 l.created_at,
+                 l.name,
+                 l.description
+            FROM listings l
+           WHERE l.created_by = $1
+        `, id),
+        db.query(`
+          SELECT a.id,
+                 a.created_at,
+                 a.cover_letter
+            FROM applications a
+           WHERE a.user_id = $1
         `, id)
       ]);
 
       return Object.assign(
         results[0], {
-          companies: results[1]
+          companies: results[1],
+          createdListings: results[2],
+          applications: results[3]
         }
       );
     }
