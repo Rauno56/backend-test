@@ -6,6 +6,13 @@ export default function () {
         {id: 2, createdAt: new Date(), name: 'Bar'},
         {id: 3, createdAt: new Date(), name: 'Baz'}
       ]);
+    },
+
+    fetchLastestListings(users) {
+      return Promise.resolve(users.map(user => {
+        user.listings = ['for', 'bar', 'baz'];
+        return user;
+      }));
     }
   };
 }
