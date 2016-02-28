@@ -22,7 +22,10 @@ export default function (dsn) {
   const db = pgp()(dsn);
 
   return {
-    async fetchTopActiveUsers() {
+    async fetchTopActiveUsers(page = 1, perPage = 3) {
+      let limit  = perPage;
+      let offset = (page - 1) * limit;
+
       let users = await db.query(`
            SELECT u.id,
                   u.created_at,
@@ -30,7 +33,8 @@ export default function (dsn) {
                   (SELECT COUNT(id) FROM applications a WHERE a.user_id = u.id) count
              FROM users u
          ORDER BY count DESC
-      `);
+            LIMIT $1 OFFSET $2
+      `, [limit, offset]);
 
       return users;
     },
