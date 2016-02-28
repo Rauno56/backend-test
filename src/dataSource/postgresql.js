@@ -56,7 +56,7 @@ export default function (dsn) {
     },
 
     async fetchUser(id) {
-      let results = await Promise.all([
+      let results = await db.task(t => t.batch([
         db.one(`
           SELECT u.id,
                  u.name,
@@ -92,7 +92,7 @@ export default function (dsn) {
           LEFT JOIN listings l ON l.id = a.listing_id
               WHERE a.user_id = $1
         `, id)
-      ]);
+      ]));
 
       return Object.assign(
         apiInterface(results[0]), {
