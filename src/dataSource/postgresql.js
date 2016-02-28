@@ -40,17 +40,19 @@ export default function (dsn) {
     },
 
     async fetchLastestListings(users) {
-      return await Promise.all(users.map(async user => {
-        user.listings = await db.query(`
-            SELECT l.name
-              FROM listings l
-             WHERE l.created_by = $1
-          ORDER BY l.created_at DESC
-             LIMIT 3
-        `, user.id);
+      return await db.task(t => {
+        return t.batch(users.map(async user => {
+          user.listings = await t.query(`
+              SELECT l.name
+                FROM listings l
+               WHERE l.created_by = $1
+            ORDER BY l.created_at DESC
+               LIMIT 3
+          `, user.id);
 
-        return user;
-      }));
+          return user;
+        }));
+      });
     },
 
     async fetchUser(id) {
