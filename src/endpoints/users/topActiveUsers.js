@@ -1,7 +1,6 @@
-import { factory } from './../../dataSource';
+import factory from './../../dataSource/factory';
 
-const dsFactory = factory(process.env.DATA_SOURCE);
-const ds = dsFactory();
+const ds = factory(process.env.DATA_SOURCE)();
 
 export default async (req, res) => {
   try {

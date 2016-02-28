@@ -24,4 +24,11 @@ describe('dataSource', () => {
       });
     });
   });
+
+  describe('#fetchUser', () => {
+    it('should fetch user by id', async () => {
+      const user = await ds.fetchUser(1);
+      assert.equal(user.id, 1);
+    });
+  });
 });

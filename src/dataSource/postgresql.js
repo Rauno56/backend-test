@@ -22,7 +22,7 @@ export default function (dsn) {
     },
 
     async fetchLastestListings(users) {
-      users = await Promise.all(users.map(async user => {
+      return await Promise.all(users.map(async user => {
         user.listings = await db.query(`
             SELECT l.name
               FROM listings l
@@ -33,8 +33,34 @@ export default function (dsn) {
 
         return user;
       }));
+    },
 
-      return users;
+    async fetchUser(id) {
+      let results = await Promise.all([
+        db.one(`
+          SELECT u.id,
+                 u.name,
+                 u.created_at
+            FROM users u
+           WHERE u.id = $1
+        `, id),
+
+        db.query(`
+          SELECT c.id,
+                 c.created_at,
+                 c.name,
+                 t.contact_user
+            FROM companies c
+            JOIN teams t ON t.company_id = c.id
+           WHERE t.user_id = $1
+        `, id)
+      ]);
+
+      return Object.assign(
+        results[0], {
+          companies: results[1]
+        }
+      );
     }
   };
 }
