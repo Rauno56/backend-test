@@ -11,10 +11,10 @@ Back-end skill test repository.
 
 ## Testing
 
-### Over in-memory mockups
+#### Over in-memory mockups
 `set DATA_SOURCE=inMemory&&npm test` (Yeah! Windows <3)
 
-### Over a real database like PostgreSQL
+#### Over a real database like PostgreSQL
 `set DATA_SOURCE=postgreSQL&&set DSN=postgres://postgres:123@localhost:5432/backend_test&&npm test`
 
 ## Building
@@ -23,8 +23,8 @@ Back-end skill test repository.
 
 ## Running
 
-### Dev server
+#### Dev server
 `set PORT=3000&&set DATA_SOURCE=postgreSQL&&set DSN=postgres://postgres:123@localhost:5432/backend_test&&npm run dev`
 
-### Production server (after build)
+#### Production server (after build)
 `set PORT=3001&&set DATA_SOURCE=postgreSQL&&set DSN=postgres://postgres:123@localhost:5432/backend_test&&npm start`
